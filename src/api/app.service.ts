@@ -46,5 +46,6 @@ export class AppService {
       console.log('✅ Server running on port ' + config.API_PORT);
       console.log(`✅ Swagger: http://localhost:${config.API_PORT}/api/v1`);
     });
+
   }
 }
