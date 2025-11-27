@@ -9,6 +9,9 @@ import { StudentsModule } from './students/students.module';
 import { TeachersModule } from './teachers/teachers.module';
 import { GroupsModule } from './groups/groups.module';
 import { RoomModule } from './room/room.module';
+import { UsersModule } from './users/users.module';
+import { CoursesModule } from './courses/courses.module';
+import { BugalteryModule } from './bugaltery/bugaltery.module';
 
 @Module({
   imports: [
@@ -47,6 +50,12 @@ import { RoomModule } from './room/room.module';
     GroupsModule,
 
     RoomModule,
+
+    UsersModule,
+
+    CoursesModule,
+
+    BugalteryModule,
   ],
 })
 export class AppModule {}

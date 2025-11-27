@@ -3,12 +3,11 @@ import { TeachersService } from './teachers.service';
 import { TeachersController } from './teachers.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Teacher } from 'src/core/entities/teacher.entity';
-import { TeacherAvatar } from 'src/core/entities/teacher-avatar.entity';
 import { FileModule } from '../file/file.module';
-import { MailModule } from 'src/infrastructure/lib/mail/mail.module';
+import { User } from 'src/core/entities/user.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Teacher, TeacherAvatar]), FileModule, MailModule],
+  imports: [TypeOrmModule.forFeature([Teacher, User]), FileModule],
   controllers: [TeachersController],
   providers: [TeachersService],
 })

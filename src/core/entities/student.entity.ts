@@ -1,27 +1,20 @@
 import { BaseEntity } from "src/common/database/BaseEntity";
 import { Column, Entity, OneToOne } from "typeorm";
-import { StudentAvatar } from "./student-avatar.entity";
+import { User } from "./user.entity";
+import { STUDENT_STATUS } from "src/common/enum";
 
 @Entity('students')
 export class Student extends BaseEntity {
-    @Column()
-    fullName: string;
+
+    @OneToOne(() => User, (user) => user.student, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+    user: User;
 
     @Column()
-    phone: string;
+    startDate: Date;
 
     @Column()
-    pasport: string;
+    endDate: Date;
 
-    @Column({ unique: true })
-    email: string;
-
-    @Column()
-    password: string;
-
-    @Column({ default: false })
-    isVerified: boolean;
-
-    @OneToOne(() => StudentAvatar, (avatar) => avatar.student, { onDelete: 'CASCADE' , onUpdate: 'CASCADE' })
-    avatar: StudentAvatar;
+    @Column({ type: 'enum', enum: STUDENT_STATUS, default: STUDENT_STATUS.ACTIVE })
+    status: STUDENT_STATUS;
 }

@@ -12,7 +12,7 @@ export class SelfGuard implements CanActivate {
     const req = context.switchToHttp().getRequest();
     if (
       req.user?.role ||
-      req.user?.role === ROLES.SUPERADMIN ||
+      req.user?.role === ROLES.MANAGER ||
       req.user?.role === ROLES.ADMIN
     ) {
       return true;

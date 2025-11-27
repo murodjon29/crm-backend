@@ -1,39 +1,40 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsEmail, IsBoolean, MinLength, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateTeacherDto {
-  @ApiProperty({ example: 'John Doe', description: 'Full name of the teacher' })
+  @ApiProperty({
+    description: 'User ID associated with the teacher',
+    example: 1,
+  })
+  @IsNotEmpty()
+  userId: number;
+
+  @ApiProperty({
+    description: 'SV file path or URL',
+    example: 'uploads/sv/teacher123.pdf',
+    type: 'string',
+  })
+  @IsNotEmpty()
   @IsString()
-  fullName: string;
+  sv: string;
+}
 
-  @ApiProperty({ example: '+998901234567', description: 'Phone number' })
-  @IsString()
-  phone: string;
-
-  @ApiProperty({ example: 'AA1234567', description: 'Passport number' })
-  @IsString()
-  pasport: string;
-
-  @ApiProperty({ example: 'teacher@example.com', description: 'Email address' })
-  @IsEmail()
-  email: string;
-
-  @ApiProperty({ example: 'Password123!', description: 'Password for account' })
-  @IsString()
-  @MinLength(6)
-  password: string;
-
-  @ApiProperty({ example: 'Experienced math teacher', description: 'Short biography' })
-  @IsString()
-  bio: string;
-
-  @ApiProperty({ example: false, description: 'Verification status', required: false })
-  @IsBoolean()
+export class UpdateTeacherDto {
+  @ApiProperty({
+    description: 'User ID associated with the teacher (optional)',
+    example: 1,
+    required: false,
+  })
   @IsOptional()
-  isVerified?: boolean;
+  userId?: number;
 
-  @ApiProperty({ example: 'uuid-of-avatar', description: 'Teacher avatar ID', required: false })
+  @ApiProperty({
+    description: 'SV file path or URL (optional)',
+    example: 'uploads/sv/teacher123_updated.pdf',
+    required: false,
+    type: 'string',
+  })
   @IsOptional()
   @IsString()
-  avatarId?: string;
+  sv?: string;
 }

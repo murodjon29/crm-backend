@@ -1,6 +1,7 @@
 enum ROLES  {
   ADMIN = 'admin',
-  SUPERADMIN = 'superadmin',
+  USER = 'user',
+  
   MANAGER = 'manager',
   TEACHER = 'teacher',
   STUDENT = 'student',
@@ -12,4 +13,11 @@ enum Room_STATUS {
   MAINTENANCE = 'maintenance',
 }
 
-export { ROLES, Room_STATUS };
+enum STUDENT_STATUS {
+  ACTIVE = 'active',
+  INACTIVE = 'inactive',
+  GRADUATED = 'graduated',
+  SUSPENDED = 'suspended',
+}
+
+export { ROLES, Room_STATUS, STUDENT_STATUS };
